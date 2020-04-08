@@ -13,11 +13,11 @@ public:
 	Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud);
 	~Level();
 
-	void handleInput(float dt);
-	void update(float dt);
-	void render();
+	virtual void handleInput(float dt);
+	virtual void update(float dt);
+	virtual void render();
 
-private:
+protected:
 	// Default functions for rendering to the screen.
 	void beginDraw();
 	void endDraw();
