@@ -49,6 +49,7 @@ void PlayerObject::handleInput(float dt)
 	{
 		if (!isJumping)
 		{
+			audio->playSoundbyName("jump");
 			velocity = jumpVector;
 			isJumping = true;
 		}
@@ -112,6 +113,10 @@ void PlayerObject::update(float dt)
 	}
 	else if (isCrouching)
 	{
+		if (audio->getSound("up")->getStatus() != sf::SoundSource::Status::Playing)
+		{
+			audio->playSoundbyName("up");
+		}
 		setCollisionBox(0, 0, 32, 40);
 		setSize(sf::Vector2f(32, 40));
 		currentAni = &crouchingAni;

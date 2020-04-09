@@ -19,6 +19,11 @@ Menu::Menu(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud) 
 	info.setPosition(10, 100);
 	info.setString("Press Enter to Start!");
 
+
+	audio->addMusic("sfx/cantina.ogg", "cantina");
+	audio->addSound("sfx/SMB_jump-small.ogg", "jump");
+	audio->addSound("sfx/SMB_1-up.ogg", "up");
+
 }
 
 Menu::~Menu()
@@ -29,6 +34,7 @@ void Menu::handleInput(float dt)
 {
 	if (input->isKeyDown(sf::Keyboard::Enter))
 	{
+		audio->playMusicbyName("cantina");
 		gameState->setCurrentState(State::LEVEL);
 	}
 }

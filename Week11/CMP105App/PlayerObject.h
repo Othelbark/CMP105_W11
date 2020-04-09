@@ -2,6 +2,7 @@
 #include "Framework/GameObject.h"
 #include "Framework/Animation.h"
 #include "Framework/Collision.h"
+#include "Framework/AudioManager.h"
 class PlayerObject : public GameObject
 {
 public:
@@ -18,9 +19,11 @@ public:
 	float getSpeed() { return speed; };
 
 	void setView(sf::View* vw) { view = vw; };
+	void setAudio(AudioManager* aud) { audio = aud; };
 
 protected:
 	sf::View* view;
+	AudioManager* audio;
 
 	float scale;
 	sf::Vector2f gravity;

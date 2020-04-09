@@ -7,6 +7,7 @@ Game::Game(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud) 
 	// initialise game objects
 	player.setInput(input);
 	player.setView(&view);
+	player.setAudio(audio);
 	player.setPosition(200, 300);
 	player.setSize(sf::Vector2f(30, 42));
 	player.setCollisionBox(0, 0, 30, 42);
@@ -14,8 +15,7 @@ Game::Game(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud) 
 	player.setTexture(&playerTexture);
 
 
-	// initialise game objects
-	audio->addMusic("sfx/cantina.ogg", "cantina");
+
 }
 
 Game::~Game()
@@ -40,10 +40,12 @@ void Game::handleInput(float dt)
 		input->setKeyUp(sf::Keyboard::Space);
 		if (gameState->getCurrentState() != State::PAUSE)
 		{
+			audio->getMusic()->pause();
 			gameState->setCurrentState(State::PAUSE);
 		}
 		else
 		{
+			audio->getMusic()->play();
 			gameState->setCurrentState(State::LEVEL);
 		}
 	}

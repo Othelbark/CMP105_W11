@@ -21,7 +21,5 @@ private:
 	sf::Texture playerTexture;
 	WorldMap worldMap;
 
-	//Things
-
 };
 
